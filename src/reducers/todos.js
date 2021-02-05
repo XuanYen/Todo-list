@@ -5,7 +5,15 @@ const SET_TODOS = 'SET_TODOS';
 const initialState = {
     items: []
 }
-export const addTodo = (text) => ({ type: ADD_TODO, payload: text });
+//export const addTodo = (text) => ({ type: ADD_TODO, payload: text });
+export const addTodo=(text)=>async dispatch=>{
+    const res=await axios.post('https://jsonplaceholder.typicode.com/todos',{
+        userId: 1,
+        title: text,
+        completed: false
+    });
+    dispatch({ type: ADD_TODO, payload: res.data});
+}
 export const setTodos=(items)=>({
     type: SET_TODOS,
     payload: items
