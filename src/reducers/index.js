@@ -19,7 +19,6 @@ const asyncMiddleware=store=>next=>action=>{
 
 export default function configStore(){
     const middlewareEnhancer = applyMiddleware(asyncMiddleware)
-    const composedEnhancers = compose(middlewareEnhancer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-    const store = createStore(reducer, undefined, composedEnhancers)
+    const store = createStore(reducer, middlewareEnhancer)
     return store;
 };

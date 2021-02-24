@@ -39,13 +39,13 @@ function TodoApp(props){
     }
     useEffect(()=>{fetchTodos()},[fetchTodos])
     return(
-        <div>
+        <div style={{ marginTop: '50px'}}>
             <input type='text' value={text} onChange={e=>setText(e.target.value)} />
             <button onClick={()=>{
                 props.addTodo(text);
                 setText('');
             }}>Add</button>
-            <table>
+            <table style={{ margin: 'auto'}}>
                 <thead>
                     <tr>
                         <th>STT</th>
